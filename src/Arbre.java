@@ -8,7 +8,7 @@ public class Arbre {
     public void creationABR(int val[]){
         for (int valeur:val) {
             if(racine!= null){
-                racine.ajoutAbr(valeur);
+                racine.ajout(valeur);
             }
             else{
                 racine = new Noeud(valeur);
@@ -17,15 +17,32 @@ public class Arbre {
         }
     }
 
+    public int[] convertirTabAbr(){
+        return racine.convertirTab();
+    }
 
 
 
-    public void afficher(){
+
+    public void afficherAbr(){
         racine.parcourir();
     }
+    public boolean rechercheAbr(int val){
+        if (racine != null){
+            return racine.recherche(val);
+        }
+        else {
+            return false;
+        }
 
-
-    public boolean recherche(int val){
-        return racine.recherche(val);
     }
+    public int maxAbr(){
+        return racine.max();
+    }
+
+    public int minAbr(){
+        return racine.min();
+    }
+
+
 }

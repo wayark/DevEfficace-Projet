@@ -10,13 +10,13 @@ public class Noeud {
 
     }
 
-    public void ajoutAbr(int val){
+    public void ajout(int val){
             if(this.valeur > val){
                 if(this.fg == null){
                     this.fg = new Noeud(val);
                 }
                 else {
-                    this.fg.ajoutAbr(val);
+                    this.fg.ajout(val);
                 }
             }
             else {
@@ -24,7 +24,7 @@ public class Noeud {
                     this.fd = new Noeud(val);
                 }
                 else {
-                    this.fd.ajoutAbr(val);
+                    this.fd.ajout(val);
                 }
             }
     }
@@ -57,5 +57,45 @@ public class Noeud {
         }
 
         return retour;
+    }
+
+    public int max(){
+        if(this.fd == null){
+            return this.valeur;
+        }
+        else {
+            return this.fd.max();
+        }
+    }
+
+    public int min(){
+        if(this.fg == null){
+            return this.valeur;
+        }
+        else {
+            return this.fg.min();
+        }
+    }
+
+    public int[] convertirTab() {
+        if(estFeuille()){
+            return new int[]{this.valeur};
+        }
+        else {
+            int tabD[];
+            int tabG[];
+            int result[];
+            if(this.fd != null){
+                tabD = this.fd.convertirTab();
+            }
+            if (this.fg != null){
+                tabG = this.fg.convertirTab();
+            }
+            result = ArrayUtils
+        }
+    }
+
+    public boolean estFeuille(){
+        return this.fd == null && this.fg == null;
     }
 }
